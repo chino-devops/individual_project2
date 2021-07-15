@@ -1,17 +1,8 @@
 from flask import Flask, request 
-import random
-
-app = Flask(__name__)
-
-@app.route('/get_brand', methods=['GET'])
-def get_brand():
-    return random.choice(['rolex', 'omega', 'vacheron_constantin', 'audemars piguet']) 
 
 
 
-@app.route('/get_material', methods=['GET'] )
-def get_material():
-    return random.choice(['18k_gold', '914L_steel', 'platinum', 'titanium'])
+
 
 @app.route('/gen_cost', methods=['post'] )
 def gen_cost():
@@ -58,7 +49,3 @@ def gen_cost():
             return '£25,900'
     else:
         return "please enter a correct choice" 
-
-
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True)
