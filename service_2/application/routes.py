@@ -1,4 +1,5 @@
-from flask import Flask, requests 
+from application import app 
+from flask import Flask, request 
 import random
 
 

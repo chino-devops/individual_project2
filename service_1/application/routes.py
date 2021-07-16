@@ -1,6 +1,7 @@
 from application import app, db  
-from flask import flask, render_template, requests 
+from flask import Flask, render_template 
 from flask_sqlalchemy import SQLAlchemy 
+import requests
 
 class costs(db.Model):
     id = db.Column(db.Integer, primary_key=True, nullable=False, autoincrement = True)
@@ -10,14 +11,14 @@ class costs(db.Model):
 
 @app.route('/')
 def home():
-    brand = requests.get('http://watch_api:5000/get_brand')
-    material = requests.get('http://watch_api:5000/get_material')
-    cost = requests.post('http://watch_api:5000/get_material', data = brand.text + ' '+  material.text)
+    brand = requests.get('http://service_2:5000/get_brand')
+    material = requests.get('http://service_3:5000/get_material')
+    cost = requests.post('http://service_4:5000/get_material', data = brand.text + ' '+  material.text)
 
     all_costs = costs.query.all()
 
-    new_cost = price(brand = brand.text, material = material.text, cost = cost.text)
-    db.session.add(price)
+    new_cost = costs(brand = brand.text, material = material.text, cost = cost.text)
+    db.session.add(new_cost)
     db.session.commit()
 
 
