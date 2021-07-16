@@ -1,7 +1,6 @@
 from application import app, db  
-from flask import flask, render_template 
+from flask import flask, render_template, requests 
 from flask_sqlalchemy import SQLAlchemy 
-import requests
 
 class costs(db.Model):
     id = db.Column(db.Integer, primary_key=True, nullable=False, autoincrement = True)
