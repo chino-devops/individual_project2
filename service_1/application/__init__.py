@@ -1,11 +1,12 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from os import getenv 
 
 
 
 app = Flask(__name__)
 
-app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://root:Nwankwo1@35.189.108.251:3306/flaskdb"
+app.config["SQLALCHEMY_DATABASE_URI"] = getenv('DATABASE_URI')
 
 db = SQLAlchemy(app)
 
